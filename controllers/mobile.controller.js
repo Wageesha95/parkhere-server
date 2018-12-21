@@ -37,7 +37,8 @@ module.exports.register = (req, res, next) => {
         zip:req.body.zip,
         temptoken:req.body.temptoken,
         regcode:req.body.regcode,
-        verified:false
+        verified:false,
+        role:"driver"
         });
         user.save((err, doc) => {
         if (!err){
@@ -236,7 +237,7 @@ module.exports.addUserVehicle=(req,res)=>{
         {
             email:req.body.email
         },
-        {
+        { 
             $push:{
                 'vehicles':req.body.vehicle
             }
@@ -292,4 +293,25 @@ module.exports.deleteUserVehicle=(req,res)=>{
         }
     )
 
+}
+
+const Park = mongoose.model('park');
+
+module.exports.getParks=(req,res)=>{
+    var latup = parseFloat(req.query.lat)-0.2;
+    var latdw = parseFloat(req.query.lat)+0.2;
+    var lngup = parseFloat(req.query.lng)-0.2;
+    var lngdw = parseFloat(req.query.lng)+0.2;
+
+    Park.find({lat : {$gt:latup,$lt:latdw}, lng : {$gt:lngup,$lt:lngdw}
+    }, function(err, user) 
+    {
+       if (err)
+       {
+           res.send(err);
+       }
+       console.log(user);
+       res.json(user);
+   
+    });
 }
