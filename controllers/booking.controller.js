@@ -176,16 +176,7 @@ module.exports.sethistory =  (req,res,next)=>{
     booking.find({
             keeperId:req.query.kid,
             vehicleType:req.query.type,
-            $or: [
-                {$and:[
-                    { arivalTime: {$lt:parseFloat(req.query.arrival)} },
-                    { depatureTime: {$gt:parseFloat(req.query.arrival) } }
-                ]},
-                {$and:[
-                    { arivalTime: {$lt:parseFloat(req.query.dep)} },
-                    { depatureTime: {$gt:parseFloat(req.query.dep) }}
-                ]}
-              ],
+            $and: [{ depatureTime: {$gt:parseFloat(req.query.arrival)}},{ arivalTime: {$lt:parseFloat(req.query.dep)}}],
             date:req.query.date
         },
         (err, booking) => {
@@ -210,8 +201,5 @@ module.exports.sethistory =  (req,res,next)=>{
             }
         }
     );
-
-
-
     //res.json({sucsess:true,message:"Success booking "+req.query.kid});
 }

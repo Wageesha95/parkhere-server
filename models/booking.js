@@ -53,6 +53,7 @@ const booking = mongoose.Schema({
     keeperId:{
         type:String
     },
+    
     charge:{
         type:Number
     }
