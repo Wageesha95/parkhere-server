@@ -59,6 +59,10 @@ module.exports.setBook =  (req,res,next)=>{
 
   let  newbook=new booking(req.body);
 //   this.newbook.bookId=Date.now();
+var type;
+if(req.body.vehicleType=="Bicycle")
+type=2;
+newbook.slotId=req.body.keeperId+type+req.body.slotNum  
 var date=new Date().getTime()
 newbook.bookId=date;
 console.log(date)
