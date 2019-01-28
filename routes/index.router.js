@@ -37,6 +37,9 @@ router.get('/web/bookingSetPaid',ctrlBook.bookingSetPaid);
 
 const ctrlUser = require('../controllers/webuser.controller');
 const keeper=require('../controllers/parkkeeper.controller')
+
+router.post('/web/feedback', keeper.feedback);
+
 // const filecntrl=require('../controllers/userfile');
 // const admincntrl=require('../controllers/adminfile')
 // const jwtHelper = require('../config/jwtHelper');
