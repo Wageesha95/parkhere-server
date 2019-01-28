@@ -7,10 +7,13 @@ const booking = mongoose.Schema({
         
     },
 
-
     DriverName:{
         type:String
         
+    },
+
+    ParkName:{
+        type:String
     },
 
     DriverEmail:{

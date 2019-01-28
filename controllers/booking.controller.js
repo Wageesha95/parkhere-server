@@ -250,12 +250,13 @@ module.exports.getSlotId = (req,res)=>{
 module.exports.getUserBooking = (req,res)=>{
     booking.find(
         { DriverEmail: req.query.DriverEmail },
-        function(err,data){
-            if(err){
-                res.send(err);
+        function(err,books){
+            if(!err){
+                res.send(books);
             }else{
-                res.send(data);
+                res.send(err);
             }
+
         }
     )
 }
