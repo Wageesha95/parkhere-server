@@ -212,6 +212,7 @@ module.exports.sethistory =  (req,res,next)=>{
 const Park = mongoose.model('park');
 
 module.exports.getSlotId = (req,res)=>{
+    var c = req.query.type;
     Park.findOne({
         keeperId:req.query.keeperId
     }
@@ -221,7 +222,7 @@ module.exports.getSlotId = (req,res)=>{
        {
            res.send(err);
        }
-       var c = req.query.type;
+       
 
        switch (c){
             case 1:
@@ -244,3 +245,18 @@ module.exports.getSlotId = (req,res)=>{
    
     });
 }
+
+
+module.exports.getUserBooking = (req,res)=>{
+    booking.find(
+        { DriverEmail: req.query.DriverEmail },
+        function(err,data){
+            if(err){
+                res.send(err);
+            }else{
+                res.send(data);
+            }
+        }
+    )
+}
+
