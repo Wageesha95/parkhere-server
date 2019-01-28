@@ -261,3 +261,16 @@ module.exports.getUserBooking = (req,res)=>{
     )
 }
 
+module.exports.bookingSetPaid = (req,res)=>{
+    booking.updateOne(
+        {
+            bookId:req.query.bookId
+        },
+        {
+            $set : {
+                paid:req.query.paid
+            }
+        }
+    )
+    res.json("sucsess");
+}

@@ -22,6 +22,10 @@ const booking = mongoose.Schema({
         type:Number
     },
 
+    paid:{
+        type:Boolean
+    },
+
     DriverEmail:{
         type:String
     },

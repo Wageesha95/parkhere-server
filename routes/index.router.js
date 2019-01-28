@@ -30,6 +30,7 @@ const ctrlBook=require('../controllers/booking.controller');
 router.get('/web/getBookedSlots',ctrlBook.getBookedSlots);
 router.get('/web/getSlotId',ctrlBook.getSlotId);
 router.get('/web/getUserBooking',ctrlBook.getUserBooking);
+router.get('/web/bookingSetPaid',ctrlBook.bookingSetPaid);
 
 // webApp routing  >>>>>>>>>>>>>>>>>>>>>>>
 
