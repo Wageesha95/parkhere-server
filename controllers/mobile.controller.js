@@ -298,10 +298,10 @@ module.exports.deleteUserVehicle=(req,res)=>{
 const Park = mongoose.model('park');
 
 module.exports.getParks=(req,res)=>{
-    var latup = parseFloat(req.query.lat)-0.2;
-    var latdw = parseFloat(req.query.lat)+0.2;
-    var lngup = parseFloat(req.query.lng)-0.2;
-    var lngdw = parseFloat(req.query.lng)+0.2;
+    var latup = parseFloat(req.query.lat)-0.04;
+    var latdw = parseFloat(req.query.lat)+0.04;
+    var lngup = parseFloat(req.query.lng)-0.04;
+    var lngdw = parseFloat(req.query.lng)+0.04;
 
     Park.find({lat : {$gt:latup,$lt:latdw}, lng : {$gt:lngup,$lt:lngdw}
     }, function(err, user) 

@@ -7,6 +7,7 @@ const jwtHelper = require('../config/jwtHelper');
 // Mobile routing >>>>>>>>>>
 
 
+
 router.post('/register', ctrlMobile.register);
 router.post('/authenticate', ctrlMobile.authenticate);
 router.post('/updateUser', ctrlMobile.updateUser);
@@ -22,6 +23,11 @@ router.put('/rstpw',ctrlMobile.puttoken);
 router.get('/test',ctrlMobile.test);
 
 
+
+
+const ctrlBook=require('../controllers/booking.controller');
+
+router.get('/web/getBookedSlots',ctrlBook.getBookedSlots);
 
 // webApp routing  >>>>>>>>>>>>>>>>>>>>>>>
 
@@ -54,6 +60,17 @@ router.get('/web/acceptpark/:id',keeper.acceptpark)
 router.get('/web/users', ctrlUser.users);
 router.get('/web/readmsg/:file',ctrlUser.readmsg);
 router.get('/web/getowners', ctrlUser.getowners);
+
+router.get('/web/bookingDetails/:slotId',ctrlBook.bookingDetails)
+router.get('/web/booking/:id',ctrlBook.booking)
+router.get('/web/bookinghistory/:id',ctrlBook.bookinhistory)
+router.post('/web/setBook',ctrlBook.setBook)
+router.get('/web/deletebook/:bookId',ctrlBook.deleteBook)
+router.post('/web/sethistory',ctrlBook.sethistory)
+router.post('/web/releaseslot',ctrlBook.releaseslot)
+
+
+
 
 // router.post('/upload/:id',filecntrl.savefile);
 // router.get('/files/:id',filecntrl.files)
