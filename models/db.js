@@ -11,5 +11,5 @@ require('./park');
 require('./files');
 require('./booking')
 require('./history');
-require('./post');
+//require('./post');
 // require('./adminfile');  
