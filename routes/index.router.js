@@ -28,6 +28,7 @@ router.get('/test',ctrlMobile.test);
 const ctrlBook=require('../controllers/booking.controller');
 
 router.get('/web/getBookedSlots',ctrlBook.getBookedSlots);
+router.get('/web/getSlotId',ctrlBook.getSlotId);
 
 // webApp routing  >>>>>>>>>>>>>>>>>>>>>>>
 
