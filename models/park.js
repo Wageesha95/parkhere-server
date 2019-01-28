@@ -24,8 +24,8 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     password:{
-        type: String,
-        required: true
+        type: String
+        
     },
 
     mobileNum:{
@@ -118,6 +118,34 @@ const UserSchema = mongoose.Schema({
 role:{
     type:String,
     default:"keeper"
+},
+isactivate:{
+    type:String,
+    default:"no"
+},
+state:{
+    type:String,
+    default:"close"
+},
+ownerid:{
+    type:String
+},
+lat:{type:Number},
+lng:{type:Number},
+proPic:{type:String},
+isReport:{
+    type:Boolean,
+    default:false
+},
+temptoken:{
+    type:String
+},
+monthrev:{
+    type:Number,
+    default:0
+},
+docUrl:{
+    type:String
 }
     
 
@@ -141,13 +169,15 @@ UserSchema.methods.verifyPassword = function (password) {
 
 
 module.exports.addUser = function(newUser,callback){
-    bcrypt.genSalt(10, (err,salt)=>{
-        bcrypt.hash(newUser.password, salt, (err,hash)=>{
-        if(err) throw err;
-        newUser.password = hash;console.log(newUser)
-        newUser.save(callback);
-        });
-    });
+    // bcrypt.genSalt(10, (err,salt)=>{
+    //     bcrypt.hash(newUser.password, salt, (err,hash)=>{
+    //     if(err) throw err;
+    //     newUser.password = hash;console.log(newUser)
+    //     newUser.save(callback);
+    //     });
+    // });
+
+    newUser.save(callback);
 }
 
 

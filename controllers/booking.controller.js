@@ -209,3 +209,39 @@ module.exports.sethistory =  (req,res,next)=>{
     );
     //res.json({sucsess:true,message:"Success booking "+req.query.kid});
 }
+const Park = mongoose.model('park');
+
+module.exports.getSlotId = (req,res)=>{
+    Park.findOne({
+        keeperId:req.query.keeperId
+    }
+    , function(err, park) 
+    {
+       if (err)
+       {
+           res.send(err);
+       }
+       console.log(user);
+       var c = req.query.type;
+
+       switch (c){
+            case 1:
+                res.json(park.type1);
+                break;
+            case 2:
+                res.json(park.type2);
+                break;
+            case 3:
+                res.json(park.type3);
+                break;
+            case 4:
+                res.json(park.type4);
+                break;
+            case 5:
+                res.json(park.type5);
+                break;
+       }
+       
+   
+    });
+}
