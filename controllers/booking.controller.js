@@ -190,9 +190,15 @@ module.exports.sethistory =  (req,res,next)=>{
             }else{
                 console.log('Im in backend');
                 // return res.status(200).json({ status: true, record:record})
+                
                 var arr = [];
+                var arr2 = [];
                 booking.forEach(element => {
-                    arr.push(element.slotNum)
+                    var obj = new Object();
+                    obj.slotNum = element.slotNum;
+                    obj.slotId = element.slotId;
+                    arr.push(obj);
+                    //arr2.push(element.slotId);
                 });
                 res.json({
                     takenCount : booking.length,
