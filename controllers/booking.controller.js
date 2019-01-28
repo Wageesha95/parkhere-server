@@ -221,7 +221,6 @@ module.exports.getSlotId = (req,res)=>{
        {
            res.send(err);
        }
-       console.log(user);
        var c = req.query.type;
 
        switch (c){
