@@ -234,12 +234,13 @@ module.exports.acceptpark=(req,res)=>{
 const Feedback = mongoose.model('feedback');
 
 module.exports.feedback=(req,res)=>{
-    let newUser = new feedback(req.body)
-    Feedback.addUser(newUser, (err,user)=>{
-        if(err){
-            res.json("err")
-        }else{
-            res.json("success")
+    let newUser = new Feedback(req.body)
+
+    newUser.save((err, doc) => {
+        if (!err)
+            res.send(doc);
+        else {
+           res.send(err)
         }
-    });
+    })
 }

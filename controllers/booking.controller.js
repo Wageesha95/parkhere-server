@@ -262,15 +262,27 @@ module.exports.getUserBooking = (req,res)=>{
 }
 
 module.exports.bookingSetPaid = (req,res)=>{
+    var a;
+    if(req.query.paid==="true"){
+        a=true;
+    }else{
+        a=false;
+    }
     booking.updateOne(
         {
             bookId:req.query.bookId
         },
         {
             $set : {
-                paid:req.query.paid
+                paid:a
+            }
+        },function(err){
+            if(err){
+                res.send(err)
+            }else{
+                res.json({done:"done"})
             }
         }
     )
-    res.json("sucsess");
+    
 }
